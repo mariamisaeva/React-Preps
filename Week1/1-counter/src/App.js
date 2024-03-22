@@ -8,6 +8,7 @@ function App() {
             <Counter />
         </div>
     );
+
 }
 
 export default App;
