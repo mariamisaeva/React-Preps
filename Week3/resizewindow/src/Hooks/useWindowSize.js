@@ -2,6 +2,11 @@ import { useState, useEffect, useDebugValue } from 'react';
 
 function useWindowSize() {
 
+    const [windowSize, setWindowSize] = useState({
+        width: undefined,
+        height: undefined
+    });
+
     function getWindowSize() {
         setWindowSize({
             width: window.innerWidth,
@@ -9,14 +14,11 @@ function useWindowSize() {
         });
     }
 
-    const [windowSize, setWindowSize] = useState({
-        width: undefined,
-        height: undefined
-    });
 
     useEffect(() => {
 
         window.addEventListener('resize', getWindowSize);
+        getWindowSize(); //initial call
 
         return () => {
             window.removeEventListener('resize', getWindowSize);
